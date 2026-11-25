@@ -9,7 +9,6 @@ def ridge_regression(X: list, y: list, lam: float) -> list:
     b= np.array(y)
 
     trans_a= a.T
-    first_sum= np.dot(trans_a, a) + lam * np.identity(a.shape[1])
-    sum_inv= np.linalg.inv(first_sum)
+    first_sum= np.linalg.inv(np.dot(trans_a, a) + lam * np.identity(a.shape[1]))
     second_part= np.dot(trans_a, b) 
-    return np.dot(sum_inv, second_part)
+    return np.dot(first_sum, second_part)
